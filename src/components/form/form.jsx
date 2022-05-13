@@ -1,15 +1,16 @@
-import React, { Component } from "react";
-import { nanoid } from "nanoid";
-import s from "./form.module.css";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { nanoid } from 'nanoid';
+import s from './form.module.css';
 
 class Input extends Component {
   state = {
-    name: "",
-    number: "",
-    id: "",
+    name: '',
+    number: '',
+    id: '',
   };
 
-  onChenge = (e) => {
+  onChenge = e => {
     const { name, value } = e.currentTarget;
     this.setState({ [name]: value, id: nanoid(5) });
   };
@@ -20,7 +21,7 @@ class Input extends Component {
   };
 
   removeState() {
-    this.setState({ name: "", number: "" });
+    this.setState({ name: '', number: '' });
   }
 
   render() {
@@ -28,7 +29,7 @@ class Input extends Component {
     return (
       <form
         className={s.form}
-        onSubmit={(e) => {
+        onSubmit={e => {
           e.preventDefault();
           this.onSubmit();
         }}
@@ -67,3 +68,5 @@ class Input extends Component {
   }
 }
 export default Input;
+
+Input.propTypes = { addContacts: PropTypes.func.isRequired };

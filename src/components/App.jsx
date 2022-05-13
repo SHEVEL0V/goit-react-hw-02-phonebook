@@ -1,22 +1,22 @@
-import React, { Component } from "react";
-import Container from "./container/container";
-import Input from "./form/form";
-import ContactsList from "./contactsList/contactsList";
-import Filter from "./filterContacts/filter";
+import React, { Component } from 'react';
+import Container from './container/container';
+import Input from './form/form';
+import ContactsList from './contactsList/contactsList';
+import Filter from './filterContacts/filter';
 
 class App extends Component {
   state = {
     contacts: [],
-    filter: "",
+    filter: '',
   };
 
-  addValidContacts = (value) => {
+  addValidContacts = value => {
     const contacts = this.state.contacts;
     const arrey = [...contacts, value];
 
     if (
-      contacts.every((e) => e.name !== value.name) &&
-      contacts.every((e) => e.number !== value.number)
+      contacts.every(e => e.name !== value.name) &&
+      contacts.every(e => e.number !== value.number)
     ) {
       this.setState({ contacts: arrey });
     } else {
@@ -24,7 +24,7 @@ class App extends Component {
     }
   };
 
-  onInputFilter = (value) => {
+  onInputFilter = value => {
     this.setState({ filter: value });
   };
 
@@ -32,13 +32,13 @@ class App extends Component {
     const { contacts, filter } = this.state;
     const filterLowCace = filter.toLowerCase();
 
-    return contacts.filter((el) => {
+    return contacts.filter(el => {
       return el.name.toLowerCase().includes(filterLowCace);
     });
   };
-  removeContacts = (id) => {
-    this.setState((preState) => {
-      return { contacts: preState.contacts.filter((el) => el.id !== id) };
+  removeContacts = id => {
+    this.setState(preState => {
+      return { contacts: preState.contacts.filter(el => el.id !== id) };
     });
   };
 

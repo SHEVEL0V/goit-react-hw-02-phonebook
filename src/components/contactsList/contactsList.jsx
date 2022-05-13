@@ -1,4 +1,5 @@
-import s from "./contactsList.module.css";
+import PropTypes from 'prop-types';
+import s from './contactsList.module.css';
 
 export default function ContactsList({ contacts, removeContacs }) {
   return (
@@ -6,16 +7,17 @@ export default function ContactsList({ contacts, removeContacs }) {
       <h2>Contacts:</h2>
       <ul>
         {contacts.map((el, inx) => {
-          const number = inx + 1;
+          const numbering = inx + 1;
+          const { id, name, number } = el;
           return (
-            <li key={el.id} className={s.item}>
-              <span className={s.number}>{number}</span>
+            <li key={id} className={s.item}>
+              <span className={s.number}>{numbering}</span>
               <span>
-                <b className={s.text}>name:</b> {el.name}{" "}
+                <b className={s.text}>name:</b> {name}{' '}
               </span>
               <span>
                 <b className={s.text}>tel:</b>
-                {el.number}
+                {number}
               </span>
               <button
                 className={s.button}
@@ -34,3 +36,8 @@ export default function ContactsList({ contacts, removeContacs }) {
     </div>
   );
 }
+
+ContactsList.propTypes = {
+  removeContacs: PropTypes.func.isRequired,
+  contacts: PropTypes.array.isRequired,
+};
