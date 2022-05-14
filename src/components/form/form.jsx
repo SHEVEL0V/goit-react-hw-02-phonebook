@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 import s from './form.module.css';
 
-class Input extends Component {
+class Form extends Component {
   state = {
     name: '',
     number: '',
-    id: '',
   };
 
   onChenge = e => {
@@ -67,6 +66,6 @@ class Input extends Component {
     );
   }
 }
-export default Input;
+export default Form;
 
-Input.propTypes = { addContacts: PropTypes.func.isRequired };
+Form.propTypes = { addContacts: PropTypes.func.isRequired };

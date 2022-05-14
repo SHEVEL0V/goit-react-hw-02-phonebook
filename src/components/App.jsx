@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Container from './container/container';
-import Input from './form/form';
+import Form from './form/form';
 import ContactsList from './contactsList/contactsList';
 import Filter from './filterContacts/filter';
 
@@ -12,11 +12,11 @@ class App extends Component {
 
   addValidContacts = value => {
     const contacts = this.state.contacts;
+
     const arrey = [...contacts, value];
 
     if (
-      contacts.every(e => e.name !== value.name) &&
-      contacts.every(e => e.number !== value.number)
+      contacts.every(e => e.name.toLowerCase() !== value.name.toLowerCase())
     ) {
       this.setState({ contacts: arrey });
     } else {
@@ -24,7 +24,7 @@ class App extends Component {
     }
   };
 
-  onInputFilter = value => {
+  onChangeFilter = value => {
     this.setState({ filter: value });
   };
 
@@ -48,9 +48,9 @@ class App extends Component {
       <Container>
         <div>
           <h1>Phonebook</h1>
-          <Input addContacts={this.addValidContacts} />
+          <Form addContacts={this.addValidContacts} />
 
-          <Filter onInputFilter={this.onInputFilter} />
+          <Filter onChange={this.onChangeFilter} />
         </div>
         <ContactsList
           contacts={visibleContacts}
