@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import s from './filter.module.css';
 
-export default function Filter({ onChange }) {
+export default function Filter({ onChange, value }) {
   return (
     <div className={s.thamb}>
       <label>
@@ -10,6 +10,7 @@ export default function Filter({ onChange }) {
           className={s.input}
           tyte="text"
           name="filter"
+          value={value}
           onChange={e => {
             onChange(e.target.value);
           }}
@@ -21,4 +22,5 @@ export default function Filter({ onChange }) {
 
 Filter.propTypes = {
   onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
 };

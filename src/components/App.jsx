@@ -50,7 +50,7 @@ class App extends Component {
           <h1>Phonebook</h1>
           <Form addContacts={this.addValidContacts} />
 
-          <Filter onChange={this.onChangeFilter} />
+          <Filter onChange={this.onChangeFilter} value={this.state.filter} />
         </div>
         <ContactsList
           contacts={visibleContacts}

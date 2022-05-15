@@ -23,7 +23,7 @@ export default function ContactsList({ contacts, removeContacs }) {
                 className={s.button}
                 type="button"
                 onClick={() => {
-                  removeContacs(el.id);
+                  removeContacs(id);
                 }}
               >
                 <span className={s.unicode}></span>
